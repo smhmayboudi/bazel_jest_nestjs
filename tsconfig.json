@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./dist",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2017",
+      "es2017.intl",
+      "es2017.object",
+      "es2017.sharedmemory",
+      "es2017.string",
+      "es2017.typedarrays",
+      "scripthost"
+    ],
+    "paths": {
+      "@melo/apm": ["libs/apm/src"],
+      "@melo/apm/*": ["libs/apm/src/*"],
+    }
+  },
+  "exclude": ["coverage", "dist", "node_modules"]
+}

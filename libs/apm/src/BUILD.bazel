@@ -1,0 +1,68 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
+load("@melo//:apps/common/bazel/jest/index.bzl", "jest_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_config", "ts_library")
+
+package(default_visibility = ["//visibility:private"])
+
+ts_config(
+    name = "apm_ts_config",
+    src = "//libs/apm:tsconfig.lib.json",
+    deps = [
+        "//:tsconfig.json",
+    ],
+)
+
+ts_library(
+    name = "apm_ts_library",
+    srcs = glob(
+        include = ["*.ts"],
+        exclude = ["*spec.ts"],
+    ),
+    module_name = "@melo/apm",
+    runtime = "nodejs",
+    tsconfig = ":apm_ts_config",
+    deps = [
+        "@npm//@nestjs/common",
+        "@npm//@nestjs/core",
+        "@npm//@nestjs/platform-fastify",
+        "@npm//@types/aws-lambda",
+        "@npm//@types/connect",
+        "@npm//@types/node",
+        "@npm//@types/source-map-support",
+        "@npm//aws-lambda",
+        "@npm//connect",
+        "@npm//elastic-apm-node",
+        "@npm//fastify",
+        "@npm//kaop-ts",
+        "@npm//reflect-metadata",
+        "@npm//rxjs",
+        "@npm//source-map-support",
+        "@npm//tslib",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+ts_library(
+    name = "apm_test_ts_library",
+    srcs = glob(["*spec.ts"]),
+    runtime = "nodejs",
+    deps = [
+        ":apm_ts_library",
+        "@npm//@nestjs/common",
+        "@npm//@nestjs/testing",
+        "@npm//@types/jest",
+        "@npm//rxjs",
+        "@npm//ts-jest",
+    ],
+)
+
+jest_test(
+    name = "apm_jest_test",
+    srcs = glob(["*spec.ts"]),
+    jest_config = "//:jest.config.json",
+    deps = [
+        ":apm_test_ts_library",
+    ],
+    coverage = True,
+)

@@ -1,0 +1,9 @@
+package(default_visibility = ["//visibility:private"])
+
+exports_files([
+    "jest.config.json",
+    "nest-cli.json",
+    "package.json",
+    "tsconfig.json",
+    "yarn.lock",
+])

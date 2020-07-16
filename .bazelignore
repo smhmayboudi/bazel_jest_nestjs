@@ -1,0 +1,12 @@
+.git
+.gitlab
+.vscode
+.yarn
+bazel-out
+coverage
+data
+dist
+docker-compose
+node_modules
+patches
+yarn-packages-offline-cache

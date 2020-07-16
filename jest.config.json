@@ -1,0 +1,10 @@
+{
+  "coverageReporters": ["lcov", "text-summary"],
+  "moduleNameMapper": {
+    "@melo/apm": "<rootDir>/libs/apm/src",
+    "@melo/apm/(.*)": "<rootDir>/libs/apm/src/$1"
+  },
+  "modulePathIgnorePatterns": ["/bazel-out/", "/node_modules/"],
+  "preset": "ts-jest",
+  "testEnvironment": "node"
+}

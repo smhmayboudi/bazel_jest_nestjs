@@ -1,0 +1,31 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/melo-api/src",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@nestjs/swagger/plugin",
+        "options": {
+          "classValidatorShim": true,
+          "controllerFileNameSuffix": [".controller.ts"],
+          "dtoFileNameSuffix": [".dto.ts", ".entity.ts"]
+        }
+      }
+    ],
+    "webpack": true,
+    "tsConfigPath": "apps/melo-api/tsconfig.app.json"
+  },
+  "projects": {
+    "apm": {
+      "type": "library",
+      "root": "libs/apm",
+      "entryFile": "index",
+      "sourceRoot": "libs/apm/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/apm/tsconfig.lib.json"
+      }
+    }
+  },
+  "monorepo": true,
+  "root": "apps/melo-api"
+}

@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/libs/apm"
+  },
+  "exclude": ["src/*spec.ts", "test"],
+  "include": ["src/*.ts"]
+}
